@@ -18,11 +18,12 @@ namespace TechAcadCSharpAutoInsurance.Controllers
 
         public ActionResult GetQuote(Quote quote)
         {
-            Console.WriteLine("DOB--------------------");
-            Console.WriteLine(quote.DateOfBirth);
-
             //Set the quote total at $50
             quote.QuoteTotal = 50.00m;
+
+            //If the user is under 25, add $25 to the monthly total.
+            //If the user is under 18, add $100 to the monthly total.
+            //If the user is over 100, add $25 to the monthly total.
 
             int age = DateTime.Now.Year - quote.DateOfBirth.Year;
             
@@ -82,7 +83,5 @@ namespace TechAcadCSharpAutoInsurance.Controllers
             ViewBag.homeActive = "active";
             return View(quote);
         }
-        
-
     }
 }
