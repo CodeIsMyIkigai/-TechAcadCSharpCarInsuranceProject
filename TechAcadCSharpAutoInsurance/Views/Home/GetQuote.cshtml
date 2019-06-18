@@ -1,0 +1,69 @@
+﻿@model TechAcadCSharpAutoInsurance.Models.Quote
+
+@{
+    ViewBag.Title = "Success";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="row mx-auto">
+    <h2>Your quote was successfully entered:</h2>
+</div>
+
+<div class="row mx-auto form-group">
+    <div class="control-label col-md-4">
+        Personal Info
+    </div>
+    <div class="col-md-6">
+        @{  var dateString = Model.DateOfBirth.ToShortDateString(); }
+        @Model.FirstName&nbsp;&nbsp;@Model.LastName&nbsp;&nbsp;DoB:@dateString<br />
+        @Model.EmailAddress
+    </div>
+</div>
+
+<div class="row mx-auto form-group">
+    <div class="control-label col-md-4">
+        Car Info
+    </div>
+    <div class="col-md-6">
+        @Model.CarYear&nbsp;&nbsp;@Model.CarMake&nbsp;&nbsp;@Model.CarModel
+    </div>
+</div>
+
+<div class="row mx-auto form-group">
+    <div class="control-label col-md-4">
+        Driving History
+    </div>
+    <div class="col-md-6">
+        DUI:@Model.DUI&nbsp;&nbsp;Speeding Tickets:@Model.Tickets
+    </div>
+</div>
+
+<div class="row mx-auto form-group">
+    <div class="control-label col-md-4">
+        Coverage Selection
+    </div>
+    <div class="col-md-6">
+        @if(Model.FullCoverage)
+        {
+        <p>Full Coverage</p>
+        }
+        else
+        {
+        <p>Liability</p>
+        }
+    </div>
+</div>
+
+<div class="row mx-auto form-group">
+    <div class="control-label col-md-4">
+        Monthly Insurance Cost
+    </div>
+    <div class="col-md-6">
+        @{ var total = string.Format("{0:C}", Model.QuoteTotal); }
+        @total
+    </div>
+</div>
+
+
+

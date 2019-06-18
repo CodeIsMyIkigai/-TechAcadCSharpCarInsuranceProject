@@ -1,0 +1,30 @@
+﻿@using TechAcadCSharpAutoInsurance.Models
+@model List<Quote>
+    
+    <div class="row">
+        <div class="col">
+            <h5>Quotes</h5>
+        </div>        
+    </div>
+        
+
+
+    @foreach (var quote in Model)
+    {   
+        <div class="row">
+            <div class="col">
+                @quote.FirstName
+            </div>
+            <div class="col">
+                @quote.LastName
+            </div>
+            <div class="col">
+                @quote.EmailAddress
+            </div>
+            <div class="col">
+                @{ var total = string.Format("{0:C}", quote.QuoteTotal);  }
+                @total
+            </div>
+        </div>                
+    }
+
